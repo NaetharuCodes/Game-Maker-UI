@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  background-color: rgb(230, 20, 72);
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  padding: var(--large-gap);
+}
+
+.headerGroup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--large-gap);
+}
+
+.headerGroup > *:hover {
+  transition: 0.25s;
+  text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff;
+}
+
+.content {
+  flex-grow: 1;
+}
+
+.footer {
+  background-color: rgb(230, 20, 72);
+  height: 160px;
+}

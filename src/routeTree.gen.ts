@@ -11,6 +11,13 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as MythsIndexRouteImport } from './routes/myths/index'
+import { Route as LocationsIndexRouteImport } from './routes/locations/index'
+import { Route as ItemsIndexRouteImport } from './routes/items/index'
+import { Route as HooksIndexRouteImport } from './routes/hooks/index'
+import { Route as HistoryIndexRouteImport } from './routes/history/index'
+import { Route as CulturesIndexRouteImport } from './routes/cultures/index'
+import { Route as CharactersIndexRouteImport } from './routes/characters/index'
 
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
@@ -22,31 +29,122 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MythsIndexRoute = MythsIndexRouteImport.update({
+  id: '/myths/',
+  path: '/myths/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocationsIndexRoute = LocationsIndexRouteImport.update({
+  id: '/locations/',
+  path: '/locations/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ItemsIndexRoute = ItemsIndexRouteImport.update({
+  id: '/items/',
+  path: '/items/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HooksIndexRoute = HooksIndexRouteImport.update({
+  id: '/hooks/',
+  path: '/hooks/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HistoryIndexRoute = HistoryIndexRouteImport.update({
+  id: '/history/',
+  path: '/history/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CulturesIndexRoute = CulturesIndexRouteImport.update({
+  id: '/cultures/',
+  path: '/cultures/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CharactersIndexRoute = CharactersIndexRouteImport.update({
+  id: '/characters/',
+  path: '/characters/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/characters/': typeof CharactersIndexRoute
+  '/cultures/': typeof CulturesIndexRoute
+  '/history/': typeof HistoryIndexRoute
+  '/hooks/': typeof HooksIndexRoute
+  '/items/': typeof ItemsIndexRoute
+  '/locations/': typeof LocationsIndexRoute
+  '/myths/': typeof MythsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/characters': typeof CharactersIndexRoute
+  '/cultures': typeof CulturesIndexRoute
+  '/history': typeof HistoryIndexRoute
+  '/hooks': typeof HooksIndexRoute
+  '/items': typeof ItemsIndexRoute
+  '/locations': typeof LocationsIndexRoute
+  '/myths': typeof MythsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/characters/': typeof CharactersIndexRoute
+  '/cultures/': typeof CulturesIndexRoute
+  '/history/': typeof HistoryIndexRoute
+  '/hooks/': typeof HooksIndexRoute
+  '/items/': typeof ItemsIndexRoute
+  '/locations/': typeof LocationsIndexRoute
+  '/myths/': typeof MythsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/characters/'
+    | '/cultures/'
+    | '/history/'
+    | '/hooks/'
+    | '/items/'
+    | '/locations/'
+    | '/myths/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about'
-  id: '__root__' | '/' | '/about'
+  to:
+    | '/'
+    | '/about'
+    | '/characters'
+    | '/cultures'
+    | '/history'
+    | '/hooks'
+    | '/items'
+    | '/locations'
+    | '/myths'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/characters/'
+    | '/cultures/'
+    | '/history/'
+    | '/hooks/'
+    | '/items/'
+    | '/locations/'
+    | '/myths/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  CharactersIndexRoute: typeof CharactersIndexRoute
+  CulturesIndexRoute: typeof CulturesIndexRoute
+  HistoryIndexRoute: typeof HistoryIndexRoute
+  HooksIndexRoute: typeof HooksIndexRoute
+  ItemsIndexRoute: typeof ItemsIndexRoute
+  LocationsIndexRoute: typeof LocationsIndexRoute
+  MythsIndexRoute: typeof MythsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +163,68 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/myths/': {
+      id: '/myths/'
+      path: '/myths'
+      fullPath: '/myths/'
+      preLoaderRoute: typeof MythsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/locations/': {
+      id: '/locations/'
+      path: '/locations'
+      fullPath: '/locations/'
+      preLoaderRoute: typeof LocationsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/items/': {
+      id: '/items/'
+      path: '/items'
+      fullPath: '/items/'
+      preLoaderRoute: typeof ItemsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hooks/': {
+      id: '/hooks/'
+      path: '/hooks'
+      fullPath: '/hooks/'
+      preLoaderRoute: typeof HooksIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/history/': {
+      id: '/history/'
+      path: '/history'
+      fullPath: '/history/'
+      preLoaderRoute: typeof HistoryIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cultures/': {
+      id: '/cultures/'
+      path: '/cultures'
+      fullPath: '/cultures/'
+      preLoaderRoute: typeof CulturesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/characters/': {
+      id: '/characters/'
+      path: '/characters'
+      fullPath: '/characters/'
+      preLoaderRoute: typeof CharactersIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  CharactersIndexRoute: CharactersIndexRoute,
+  CulturesIndexRoute: CulturesIndexRoute,
+  HistoryIndexRoute: HistoryIndexRoute,
+  HooksIndexRoute: HooksIndexRoute,
+  ItemsIndexRoute: ItemsIndexRoute,
+  LocationsIndexRoute: LocationsIndexRoute,
+  MythsIndexRoute: MythsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
