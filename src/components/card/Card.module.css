@@ -1,0 +1,30 @@
+.card {
+  aspect-ratio: 1/1;
+  width: 180px;
+  background-color: var(--pink-accent);
+  position: relative;
+}
+
+.image {
+}
+
+.name {
+  position: absolute;
+  bottom: var(--small-gap);
+  left: var(--small-gap);
+  z-index: 2;
+}
+
+.overlay {
+  aspect-ratio: 1/1;
+  width: 180px;
+  position: absolute;
+  background: #2a7b9b;
+  background: linear-gradient(
+    180deg,
+    rgba(42, 123, 155, 0) 0%,
+    rgba(42, 123, 155, 0) 75%,
+    rgba(48, 30, 20, 1) 100%
+  );
+  top: 0;
+}

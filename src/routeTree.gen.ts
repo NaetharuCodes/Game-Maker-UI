@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ToolsIndexRouteImport } from './routes/tools/index'
 import { Route as MythsIndexRouteImport } from './routes/myths/index'
 import { Route as LocationsIndexRouteImport } from './routes/locations/index'
 import { Route as ItemsIndexRouteImport } from './routes/items/index'
@@ -18,6 +19,7 @@ import { Route as HooksIndexRouteImport } from './routes/hooks/index'
 import { Route as HistoryIndexRouteImport } from './routes/history/index'
 import { Route as CulturesIndexRouteImport } from './routes/cultures/index'
 import { Route as CharactersIndexRouteImport } from './routes/characters/index'
+import { Route as ArticleIndexRouteImport } from './routes/article/index'
 
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
@@ -27,6 +29,11 @@ const AboutRoute = AboutRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsIndexRoute = ToolsIndexRouteImport.update({
+  id: '/tools/',
+  path: '/tools/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MythsIndexRoute = MythsIndexRouteImport.update({
@@ -64,10 +71,16 @@ const CharactersIndexRoute = CharactersIndexRouteImport.update({
   path: '/characters/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ArticleIndexRoute = ArticleIndexRouteImport.update({
+  id: '/article/',
+  path: '/article/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/article/': typeof ArticleIndexRoute
   '/characters/': typeof CharactersIndexRoute
   '/cultures/': typeof CulturesIndexRoute
   '/history/': typeof HistoryIndexRoute
@@ -75,10 +88,12 @@ export interface FileRoutesByFullPath {
   '/items/': typeof ItemsIndexRoute
   '/locations/': typeof LocationsIndexRoute
   '/myths/': typeof MythsIndexRoute
+  '/tools/': typeof ToolsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/article': typeof ArticleIndexRoute
   '/characters': typeof CharactersIndexRoute
   '/cultures': typeof CulturesIndexRoute
   '/history': typeof HistoryIndexRoute
@@ -86,11 +101,13 @@ export interface FileRoutesByTo {
   '/items': typeof ItemsIndexRoute
   '/locations': typeof LocationsIndexRoute
   '/myths': typeof MythsIndexRoute
+  '/tools': typeof ToolsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/article/': typeof ArticleIndexRoute
   '/characters/': typeof CharactersIndexRoute
   '/cultures/': typeof CulturesIndexRoute
   '/history/': typeof HistoryIndexRoute
@@ -98,12 +115,14 @@ export interface FileRoutesById {
   '/items/': typeof ItemsIndexRoute
   '/locations/': typeof LocationsIndexRoute
   '/myths/': typeof MythsIndexRoute
+  '/tools/': typeof ToolsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
+    | '/article/'
     | '/characters/'
     | '/cultures/'
     | '/history/'
@@ -111,10 +130,12 @@ export interface FileRouteTypes {
     | '/items/'
     | '/locations/'
     | '/myths/'
+    | '/tools/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/article'
     | '/characters'
     | '/cultures'
     | '/history'
@@ -122,10 +143,12 @@ export interface FileRouteTypes {
     | '/items'
     | '/locations'
     | '/myths'
+    | '/tools'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/article/'
     | '/characters/'
     | '/cultures/'
     | '/history/'
@@ -133,11 +156,13 @@ export interface FileRouteTypes {
     | '/items/'
     | '/locations/'
     | '/myths/'
+    | '/tools/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  ArticleIndexRoute: typeof ArticleIndexRoute
   CharactersIndexRoute: typeof CharactersIndexRoute
   CulturesIndexRoute: typeof CulturesIndexRoute
   HistoryIndexRoute: typeof HistoryIndexRoute
@@ -145,6 +170,7 @@ export interface RootRouteChildren {
   ItemsIndexRoute: typeof ItemsIndexRoute
   LocationsIndexRoute: typeof LocationsIndexRoute
   MythsIndexRoute: typeof MythsIndexRoute
+  ToolsIndexRoute: typeof ToolsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -161,6 +187,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/': {
+      id: '/tools/'
+      path: '/tools'
+      fullPath: '/tools/'
+      preLoaderRoute: typeof ToolsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/myths/': {
@@ -212,12 +245,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CharactersIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/article/': {
+      id: '/article/'
+      path: '/article'
+      fullPath: '/article/'
+      preLoaderRoute: typeof ArticleIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  ArticleIndexRoute: ArticleIndexRoute,
   CharactersIndexRoute: CharactersIndexRoute,
   CulturesIndexRoute: CulturesIndexRoute,
   HistoryIndexRoute: HistoryIndexRoute,
@@ -225,6 +266,7 @@ const rootRouteChildren: RootRouteChildren = {
   ItemsIndexRoute: ItemsIndexRoute,
   LocationsIndexRoute: LocationsIndexRoute,
   MythsIndexRoute: MythsIndexRoute,
+  ToolsIndexRoute: ToolsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

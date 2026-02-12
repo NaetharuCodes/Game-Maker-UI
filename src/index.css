@@ -7,6 +7,7 @@
   --small-gap: 4px;
   --medium-gap: 8px;
   --large-gap: 16px;
+  --xl-gap: 32px;
 
   /* Border Radius */
   --rounded-border: 8px;
@@ -19,6 +20,7 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: "Zalando Sans Expanded", sans-serif;
+  color: white;
 }
 
 body {

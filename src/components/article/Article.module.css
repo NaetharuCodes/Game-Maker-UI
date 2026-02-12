@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+}
+
+.content {
+  max-width: 600px;
+}
+
+.title {
+  margin-top: var(--xl-gap);
+  margin-bottom: var(--large-gap);
+}
+
+.text {
+  font-size: 10pt;
+  font-weight: 300;
+  line-height: 1.2rem;
+  text-align: justify;
+  margin-bottom: var(--large-gap);
+}
+
+.image {
+  max-width: 600px;
+  margin-bottom: var(--large-gap);
+}
+
+.date {
+  font-size: 10pt;
+  color: rgba(255, 255, 255, 0.4);
+}

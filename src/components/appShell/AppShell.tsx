@@ -17,14 +17,17 @@ const AppShell = ({ children }: AppShellProps) => {
           <StyledLink to="/locations">Locations</StyledLink>
           <StyledLink to="/items">Items</StyledLink>
           <StyledLink to="/hooks">Hooks</StyledLink>
+          <StyledLink to="/tools">Tools</StyledLink>
         </div>
         <div id="header-nav-links" className={styles.headerGroup}>
           <StyledLink to="/settings">Settings</StyledLink>
           <StyledLink to="/help">Help</StyledLink>
         </div>
       </header>
+      <div className={styles.bar} />
       <section className={styles.content}>{children}</section>
-      <footer className={styles.footer}></footer>
+      <div className={styles.bar} />
+      <footer className={styles.footer}>Created by Naetharu (2025)</footer>
     </div>
   );
 };
