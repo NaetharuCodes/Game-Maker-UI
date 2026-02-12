@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import styles from "./Card.module.css";
 
-interface CardProps {
+export interface CardProps {
   imageURL: string;
   linkURL: string;
   name: string;
